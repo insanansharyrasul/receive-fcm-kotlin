@@ -50,11 +50,15 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Phase 1: log FCM token for test-message targeting
-        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
-            if (task.isSuccessful) Log.d("FCM", "FCM token: ${task.result}")
-            else Log.w("FCM", "token fetch failed", task.exception)
-        }
+        val topicName = "general"
+        FirebaseMessaging.getInstance().subscribeToTopic(topicName)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("FCM", "subscribed to $topicName")
+                } else {
+                    Log.w("FCM", "subscription failed", task.exception)
+                }
+            }
         askNotificationPermission()
         enableEdgeToEdge()
         setContent {
