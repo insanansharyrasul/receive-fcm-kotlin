@@ -1,4 +1,4 @@
-package com.example.learn_fcm
+package com.example.receive_fcm_kotlin
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

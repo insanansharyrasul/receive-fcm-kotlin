@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "learn_fcm"
+rootProject.name = "receive_fcm_kotlin"
 include(":app")
  

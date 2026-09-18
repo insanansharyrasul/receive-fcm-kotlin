@@ -1,4 +1,4 @@
-package com.example.learn_fcm.ui.theme
+package com.example.receive_fcm_kotlin.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

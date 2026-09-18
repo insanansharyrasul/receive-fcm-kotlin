@@ -1,4 +1,4 @@
-package com.example.learn_fcm
+package com.example.receive_fcm_kotlin
 
 import org.junit.Test
 
