@@ -1,6 +1,7 @@
 # receive_fcm_kotlin (Receive FCM Android Client)
 
 An Android application built with **Kotlin** and **Jetpack Compose** demonstrating how to receive and handle **Firebase Cloud Messaging (FCM)** push notifications from a backend service (such as `send_fcm_nest` or any service utilizing the Firebase Admin SDK / HTTP v1 API).
+Related backend project that sends the API [send-fcm-nest](https://github.com/insanansharyrasul/send-fcm-nest)
 
 ---
 
@@ -59,25 +60,12 @@ Open the project in Android Studio or build via Gradle:
 
 ## Testing FCM Push Notifications
 
-### 1. Retrieve the FCM Registration Token
-When the app launches, grant notification permissions. The device token will be printed in **Logcat**:
-
-```bash
-adb logcat -s FCM
-```
-
-Look for a log line similar to:
-```text
-D/FCM: FCM token: eX4mPL3-t0kEn_AbCdEf123456...
-```
-
-### 2. Send a Test Message
+### 1. Send a Test Message
 
 #### Option A: Firebase Console (Notification Composer)
 1. In the Firebase Console, navigate to **Engage** > **Messaging**.
 2. Click **New campaign** > **Firebase Notification messages**.
 3. Fill in the Notification Title and Text.
-4. Click **Send test message**, paste the device registration token obtained from Logcat, and press **Test**.
 
 #### Option B: Backend (e.g. `send_fcm_nest` / HTTP v1 API)
 Send an HTTP POST request to the Firebase v1 endpoint or trigger your NestJS backend service with a JSON payload:
@@ -85,7 +73,7 @@ Send an HTTP POST request to the Firebase v1 endpoint or trigger your NestJS bac
 ```json
 {
   "message": {
-    "token": "<YOUR_DEVICE_FCM_TOKEN>",
+    "topic": "general",
     "notification": {
       "title": "Hello from Backend!",
       "body": "This is a test push notification from send_fcm_nest."
@@ -102,7 +90,7 @@ Or a data-only payload:
 ```json
 {
   "message": {
-    "token": "<YOUR_DEVICE_FCM_TOKEN>",
+    "topic": "general",
     "data": {
       "title": "Data Alert",
       "body": "Payload delivered entirely via data attributes."
