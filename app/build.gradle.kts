@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.learn_fcm"
+        applicationId = "com.example.receive_fcm_kotlin"
         minSdk = 36
         targetSdk = 37
         versionCode = 1
@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
